@@ -77,9 +77,28 @@ li{
   color: green;
 }
 
-.error{
+.danger{
   color: red;
 }
+
+.alert{
+  width:60%;
+  height: 30%;
+  padding:1rem;
+  border:1rem;
+  border-radius: 0.5rem;
+}
+
+.alert-info{
+  /* color:antiquewhite; */
+  background-color: #df8484;
+}
+
+.alert-danger{
+  color: #7e0a0a;
+  background-color: #df8484;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap; /*to make responsive so if no space for item it will be on new line */
