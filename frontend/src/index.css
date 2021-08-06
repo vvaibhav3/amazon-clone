@@ -63,6 +63,15 @@ a.brand {
   font-weight: bold;
 }
 
+.badge{
+  background-color: #f02020;
+  color:#ffffff;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  font-size: 1.4rem;
+  margin-left: 0.3rem;
+}
+
 ul{
   padding: 0;
   margin: 0;
@@ -120,17 +129,22 @@ li{
   flex:2 1 50rem;
 }
 
+input,
+select,
+textarea,
 button{
   padding: 1rem;
   border: 0.1rem solid #f0f0f0;
   border-radius: 0.5rem;
-  cursor: pointer;
   font-size: 1.6rem;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+button{
+  cursor: pointer;
+}
 button.primary{
   background-color: #f0c040;
 }
@@ -139,6 +153,9 @@ button.block{
   width: 100%;
 }
 
+input:hover,
+select:hover,
+textarea:hover,
 button:hover{
   border: 0.1rem solid #333;
   background-color: #f5bc20;
