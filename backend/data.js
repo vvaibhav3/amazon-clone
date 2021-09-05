@@ -1,7 +1,21 @@
+import bcrypt from 'bcryptjs';
 const data={
+    users:[
+        {
+            name:"vvaibhav3",
+            email:"vaibhav@gmail.com",
+            password: bcrypt.hashSync("vaibhav",8),
+            isAdmin:true
+        },
+        {
+            name:"vikram",
+            email:"vikram@gmail.com",
+            password: bcrypt.hashSync("vikram",8),
+            isAdmin:false
+        }
+    ],
     products:[
         {
-            _id:'1',
             name:'Nike slim shirt',
             category:'Shirts',
             image:'/images/p1.jpg',
@@ -9,11 +23,10 @@ const data={
             brand:'Nike',
             rating:4.5,
             numReviews:20,
-            decription:"high quality product",
+            description:"high quality product",
             countInStock:10
         },
         {
-            _id:'2',
             name:'Gucci fit shirt',
             category:'Shirts',
             image:'/images/p2.jpg',
@@ -21,11 +34,10 @@ const data={
             brand:'Gucci',
             rating:5,
             numReviews:10,
-            decription:"high quality product",
+            description:"high quality product",
             countInStock:5
         },
         {
-            _id:'3',
             name:'Luis slim shirt',
             category:'Shirts',
             image:'/images/p3.jpg',
@@ -33,11 +45,10 @@ const data={
             brand:'Luis',
             rating:4,
             numReviews:10,
-            decription:"high quality product",
+            description:"high quality product",
             countInStock:7
         },
         {
-            _id:'4',
             name:'Denim classic pant',
             category:'Pants',
             image:'/images/p4.jpg',
@@ -45,11 +56,10 @@ const data={
             brand:'Denim',
             rating:5,
             numReviews:12,
-            decription:"high quality product",
+            description:"high quality product",
             countInStock:8
         },
         {
-            _id:'5',
             name:'Gucci classic pant',
             category:'Pants',
             image:'/images/p5.jpg',
@@ -57,11 +67,10 @@ const data={
             brand:'Gucci',
             rating:4.7,
             numReviews:10,
-            decription:"high quality product",
+            description:"high quality product",
             countInStock:9
         },
         {
-            _id:'6',
             name:'Nike slim pant',
             category:'Pants',
             image:'/images/p6.jpg',
@@ -69,7 +78,7 @@ const data={
             brand:'Nike',
             rating:4,
             numReviews:17,
-            decription:"high quality product",
+            description:"high quality product",
             countInStock:12
         }
     ]
