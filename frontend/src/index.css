@@ -91,7 +91,6 @@ li{
 }
 
 .alert{
-  width:60%;
   height: 30%;
   padding:1rem;
   border:1rem;
@@ -205,4 +204,47 @@ img.large{
 .rating span{
     color:#e4d01c;
     margin: 0.1rem;
+}
+
+/* form */
+
+.form{
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+/* for direct div's of form */
+.form > div{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.form label{
+  margin: 1rem 0;
+  display: block;
+}
+
+/* dropdown */
+
+.dropdown{
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content{
+  display:none;
+  position: absolute;
+  right:0;
+  min-width: 12rem; 
+  margin:0;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #203040;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content{
+  display: block;
 }
