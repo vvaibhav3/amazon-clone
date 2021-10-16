@@ -107,6 +107,11 @@ li{
   background-color: #df8484;
 }
 
+.alert-success{
+  color: #20a020;
+  background-color: #eeffe0;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap; /*to make responsive so if no space for item it will be on new line */
@@ -156,6 +161,10 @@ button.block{
   width: 100%;
 }
 
+button.small{
+  font-size: 1.2rem;
+}
+
 input:hover,
 select:hover,
 textarea:hover,
@@ -192,7 +201,7 @@ img.large{
 }
 
 .card-body {
-  padding: 0.5rem;
+  padding: 0.2rem 1rem;
 }
 .card-body > * {
   margin-bottom: 0.5rem;
@@ -222,7 +231,6 @@ img.large{
 
 .form label{
   margin: 1rem 0;
-  display: block;
 }
 
 /* dropdown */
@@ -247,4 +255,45 @@ img.large{
 
 .dropdown:hover .dropdown-content{
   display: block;
+}
+
+.loading{
+  display: block !important;
+}
+
+/* chekout steps */
+.checkout-step{
+  margin: 2rem;
+}
+
+.checkout-step > div{
+  border-top: 0.4rem #c0c0c0 solid;
+  color: #c0c0c0;
+  font-weight: bold;
+  flex:1;
+  padding:1rem;
+}
+
+.checkout-step > div.active{
+  border-top: 0.4rem #f08000 solid;
+  color: #f08000;
+}
+
+/* Table */
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tbody tr:nth-of-type(odd){
+  background-color: #f4f4f4;
+}
+
+table td,table th{
+  text-align: left;
+  border:0.1rem solid #e4e4e4;
+  padding: 0.5rem;
+}
+table button{
+  margin:0 0.2rem;
 }

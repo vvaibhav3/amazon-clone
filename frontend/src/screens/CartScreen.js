@@ -20,7 +20,7 @@ export default function CartScreen(props) {
     }
 
     const chekOuthander=()=>{
-        props.history.push(`/signin?redirect=shopping`);
+        props.history.push(`/signin?redirect=shipping`);
     }
     return (
             <div className="row top">

@@ -4,7 +4,13 @@ import {BrowserRouter,Link,Route} from 'react-router-dom';
 import { signout } from "./actions/userActions";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import OrderScreen from "./screens/OrderScreen";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import ProductScreen from "./screens/ProductScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import SigninScreen from "./screens/SigninScreen";
 
 function App() {
@@ -44,9 +50,14 @@ function App() {
             <div className="dropdown">
               <Link to="/#">{userInfo.name} <i className="fa fa-caret-down"></i> {" "}</Link>
               <ul className="dropdown-content">
-                <Link to="#signout" onClick={signoutHandler}>
-                  Sign-out
-                </Link>
+                <li>
+                  <Link to="/orderhistory">My Orders</Link>
+                </li>
+                <li>
+                  <Link to="#signout" onClick={signoutHandler}>
+                    Sign-out
+                  </Link>
+                </li>
               </ul>
             </div>
             ) : (
@@ -58,9 +69,15 @@ function App() {
 
       <main>
         <Route path='/cart/:id?' component={CartScreen}></Route>
-        <Route path="/" component={HomeScreen} exact></Route>
         <Route path="/signin" component={SigninScreen} ></Route>
+        <Route path="/register" component={RegisterScreen} ></Route>
+        <Route path="/shipping" component={ShippingAddressScreen}></Route>
+        <Route path="/payment" component={PaymentMethodScreen}></Route>
+        <Route path="/placeorder" component={PlaceOrderScreen}></Route>
         <Route path="/product/:id" component={ProductScreen}></Route>
+        <Route path="/order/:id" component={OrderScreen}></Route>
+        <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route path="/" component={HomeScreen} exact></Route>
       </main>
 
       <footer className="row center">created by vvaibhav3 #</footer>
