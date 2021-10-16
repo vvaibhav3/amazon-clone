@@ -9,6 +9,7 @@ import OrderScreen from "./screens/OrderScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import ProductScreen from "./screens/ProductScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import SigninScreen from "./screens/SigninScreen";
@@ -51,6 +52,9 @@ function App() {
               <Link to="/#">{userInfo.name} <i className="fa fa-caret-down"></i> {" "}</Link>
               <ul className="dropdown-content">
                 <li>
+                  <Link to="/profile">My Profile</Link>
+                </li>
+                <li>
                   <Link to="/orderhistory">My Orders</Link>
                 </li>
                 <li>
@@ -69,14 +73,15 @@ function App() {
 
       <main>
         <Route path='/cart/:id?' component={CartScreen}></Route>
+        <Route path="/product/:id" component={ProductScreen}></Route>
         <Route path="/signin" component={SigninScreen} ></Route>
         <Route path="/register" component={RegisterScreen} ></Route>
         <Route path="/shipping" component={ShippingAddressScreen}></Route>
         <Route path="/payment" component={PaymentMethodScreen}></Route>
         <Route path="/placeorder" component={PlaceOrderScreen}></Route>
-        <Route path="/product/:id" component={ProductScreen}></Route>
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route path="/profile" component={ProfileScreen}></Route>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
 
