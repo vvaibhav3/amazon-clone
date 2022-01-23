@@ -5,7 +5,7 @@ import { register } from '../actions/userActions';
 import Loader from '../components/Loader';
 import MessageBox from '../components/MessageBox';
 
-export default function RegisterScreen(props) {
+export default function AddProductScreen(props) {
 
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");

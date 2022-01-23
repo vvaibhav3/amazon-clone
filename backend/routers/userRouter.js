@@ -14,6 +14,12 @@ userRouter.get('/seed', expressAsyncHandler( async (req, res) => {
     res.send({createdUsers});
 }));
 
+
+userRouter.get("/list",isAuth,expressAsyncHandler(async(req,res)=>{
+    const users = await User.find();
+    res.send(users);
+}))
+
 userRouter.post('/signin',expressAsyncHandler(async (req,res) => {
     const user = await User.findOne({email: req.body.email});
     if(user){
@@ -39,7 +45,8 @@ userRouter.post('/register',expressAsyncHandler(async (req,res) => {
     const user=new User({
         name: req.body.name,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password,8) 
+        password: bcrypt.hashSync(req.body.password,8),
+        isAdmin: req.body.isAdmin === "yes" ? true : false 
     });
     const createdUser=await user.save();
     res.send({
@@ -83,5 +90,6 @@ userRouter.put("/profile",isAuth,expressAsyncHandler(async(req,res)=>{
         res.status(404).send({message:"User not found..."});
     }
 }))
+
 
 export default userRouter;

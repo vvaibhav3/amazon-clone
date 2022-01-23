@@ -53,13 +53,17 @@ export default function OrderScreen(props) {
     error ? (<MessageBox>{error}</MessageBox>):
     (
         <div>
-            <h1>Order {order._id}</h1>
             <div className="row top">
                 <div className="col-2">
                     <ul>
                         <li>
                             <div className="card card-body">
-                                <h2>Shipping</h2>
+                                <h1>Order-id : {order._id}</h1>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="card card-body">
+                                <h2>Shipping details -</h2>
                                 <p>
                                     <strong>Name : </strong> {order.shippingDetails.fullName}<br/>
                                     <strong>Address : </strong> {order.shippingDetails.address}<br/>
@@ -137,7 +141,7 @@ export default function OrderScreen(props) {
                         </li>
 
                         {
-                            !order.isPaid && (
+                            (!order.isPaid && order.paymentMethod==="Paypal")&& (
                             <li>
                                 {!sdkReady ? (<Loader></Loader>):(
                                     <>

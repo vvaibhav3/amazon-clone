@@ -12,6 +12,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.fa-sign-in{
+  color: white;
+}
+
 #root{
   height: 100%;
 }
@@ -19,18 +23,19 @@ body {
   display: grid;
   grid-template-areas: "header" "main" "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-rows: 5.5rem 1fr 5rem;
   height: 100%;
 }
 
 header {
   grid-area: header;
-  background-color: #203040;
+  padding-left: 1%;
+  background: linear-gradient(to left,#f72585  ,#3a0ca3);
 }
 
 main {
   grid-area: main;
-  padding: 1rem;
+  padding: 30px;
 }
 
 footer {
@@ -53,23 +58,24 @@ a {
 }
 header a {
   color: white;
-  padding: 1rem;
+  padding: 0.7rem;
 }
 a:hover {
-  color: darkorange;
+  cursor: pointer;
+  font-weight: bold;
 }
 a.brand {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 .badge{
-  background-color: #f02020;
+  background-color: #70e000;
   color:#ffffff;
   border-radius: 50%;
-  padding: 0.2rem 0.7rem;
-  font-size: 1.4rem;
-  margin-left: 0.3rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 1.3rem;
+  margin-left: 0.2rem;
 }
 
 ul{
@@ -83,11 +89,11 @@ li{
 }
 
 .success{
-  color: green;
+  color: #38b000;
 }
 
 .danger{
-  color: red;
+  color: #d90429;
 }
 
 .alert{
@@ -99,17 +105,18 @@ li{
 
 .alert-info{
   /* color:antiquewhite; */
-  background-color: #df8484;
+  background-color: #fcd5ce;
 }
 
+
 .alert-danger{
-  color: #7e0a0a;
-  background-color: #df8484;
+  color: #d90429;
+  background-color: #fcd5ce;
 }
 
 .alert-success{
   color: #20a020;
-  background-color: #eeffe0;
+  background-color: #95d5b2;
 }
 
 .row {
@@ -164,13 +171,21 @@ button.block{
 button.small{
   font-size: 1.2rem;
 }
-
-input:hover,
-select:hover,
+ 
 textarea:hover,
 button:hover{
+  color: white;
   border: 0.1rem solid #333;
-  background-color: #f5bc20;
+  background-color: #023e8a;
+}
+
+button:disabled{
+  color: #adb5bd;
+  background-color: #ced4da;
+}
+button:disabled:hover{
+  border: none;
+  border: 0.1rem solid #f0f0f0;
 }
 
 /* image */
@@ -201,7 +216,7 @@ img.large{
 }
 
 .card-body {
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
 }
 .card-body > * {
   margin-bottom: 0.5rem;
@@ -244,10 +259,10 @@ img.large{
   display:none;
   position: absolute;
   right:0;
-  min-width: 12rem; 
   margin:0;
   margin-top: 0.5rem;
-  padding: 1rem;
+  min-width: 15rem; 
+  padding: 0.7rem;
   border-radius: 0.5rem;
   background-color: #203040;
   z-index: 1;
