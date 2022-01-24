@@ -1,44 +1,54 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { register } from '../actions/userActions';
+import { addProduct} from '../actions/productActions';
 import Loader from '../components/Loader';
 import MessageBox from '../components/MessageBox';
 
 export default function AddProductScreen(props) {
 
     const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-    const [confirmPassword,setConfirmPassword] = useState("");
-    const [admin,setAdmin]=useState("no");
+    const [brand,setBrand] = useState("");
+    const [price,setPrice]=useState(0);
+    const [category,setCategory] = useState("");
+    const [rating,setRating] = useState(5);
+    // const [reviews,setReviews]=useState(0);
+    const [description,setDescription]=useState("");
+    const [image,setImage]=useState();
+    const [stock,setStock]=useState(0);
 
     const redirect= props.location.search ? props.location.search.split("=")[1] : "/";
 
-    const userRegister= useSelector(state => state.userRegister);
-    const {userInfo,laoding,error} =userRegister;
-
-    console.log(props.location.search.split("=")); 
+    const insertProduct= useSelector(state => state.insertProduct);
+    const {product,laoding,error} =insertProduct;
+    
     const dispatch = useDispatch();
     const submitHandler = (e) =>{
         e.preventDefault();
-        if(password===confirmPassword)
-            dispatch(register(name,email,password,admin));
-        else
-            alert("confrim password doesn't match...");
+        const data=new FormData();
+        data.append("name",name);
+        data.append("file",image);
+        data.append("price",price);
+        data.append("brand",brand);
+        data.append("category",category);
+        data.append("rating",rating);
+        data.append("stock",stock);
+        data.append("description",description);
+        dispatch(addProduct(data));
     }
 
     useEffect(() => {
-        if(userInfo){
+        if(product){
+            alert("Product added...");
             props.history.push(redirect);
         }
-    },[userInfo,redirect,props.history]);
+    },[product,redirect,props.history]);
 
     return (
         <div>
             <form className="form" onSubmit={submitHandler}>
                 <div>
-                    <h1>Create Account</h1>
+                    <h1>Add Product</h1>
                 </div>
                 {laoding && <Loader></Loader>}
                 {error && <MessageBox variant="danger">{error}</MessageBox> }
@@ -53,51 +63,77 @@ export default function AddProductScreen(props) {
                 </div>
                 
                 <div>
-                    <label htmlFor="email">
-                        Email Address
+                    <label htmlFor="brand">
+                        Brand
                     </label>
-                    <input type="email" id="email" placeholder="Enter email address"
-                        onChange={e => { setEmail(e.target.value)}}
+                    <input type="text" id="brand" placeholder="Enter brand name"
+                        onChange={e => { setBrand(e.target.value)}}
                     required>
                     </input>
                 </div>
 
                 <div>
-                    <label htmlFor="password">
-                        Password
+                    <label htmlFor="category">
+                        Category
                     </label>
-                    <input type="password" id="password" placeholder="Enter password"
-                        onChange={e => { setPassword(e.target.value)}}
+                    <input type="text" id="category" placeholder="Enter category i.e shirts or pants"
+                        onChange={e => { setCategory(e.target.value)}}
                     required>
                     </input>
                 </div>
 
                 <div>
-                    <label htmlFor="confirmPassword">
-                        Confirm password
+                    <label htmlFor="price">
+                        Pice
                     </label>
-                    <input type="password" id="confirmPassword" placeholder="Enter confirm password"
-                        onChange={e => { setConfirmPassword(e.target.value)}}
+                    <input type="number" id="price" placeholder="Enter price"
+                        onChange={e => { setPrice(e.target.value)}}
                     required>
                     </input>
                 </div>
 
                 <div>
-                    <span>
-                    <input type="checkbox" name="isAdmin" id="isAdmin" value={"yes"} 
-                    onChange={e => {setAdmin(e.target.value)}} 
-                    ></input>
-                    <label htmlFor="isAdmin">
-                        &nbsp;I want to be admin.
+                    <label htmlFor="stock">
+                        Stock
                     </label>
-                    </span>
+                    <input type="number" id="stock" placeholder="Enter stock"
+                        onChange={e => { setStock(e.target.value)}}
+                    required>
+                    </input>
                 </div>
 
                 <div>
-                    <button type="submit" className="primary" >Register</button>
+                    <label htmlFor="rating">
+                        Rating
+                    </label>
+                    <input type="number" id="rating" placeholder="Enter rating"
+                        onChange={e => { setRating(e.target.value)}}
+                    required>
+                    </input>
                 </div>
+
                 <div>
-                    Already have an account ? {" "} <Link to={`/signin?redirect=${redirect}`}>Sign-in</Link>
+                    <label htmlFor="description">
+                        Description
+                    </label>
+                    <textarea id="description"
+                        onChange={e => { setDescription(e.target.value)}}
+                    required>
+                    </textarea>
+                </div>
+
+                <div>
+                    <label htmlFor="image">
+                        Image
+                    </label>
+                    <input type='file' id="image"
+                        onChange={e => { setImage(e.target.files[0])}}
+                    required>
+                    </input>
+                </div>
+
+                <div>
+                    <button type="submit" className="primary" >Add</button>
                 </div>
             </form>
         </div>

@@ -15,6 +15,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import SigninScreen from "./screens/SigninScreen";
 import ShowUserList from "./screens/ShowUserScreen";
+import AddProductScreen from "./screens/AddProductScreen";
 
 function App() {
 
@@ -93,6 +94,7 @@ function App() {
       <main>
         <Route path='/cart/:id?' component={CartScreen}></Route>
         <Route path="/product/:id" component={ProductScreen}></Route>
+        <Route path="/addProduct" component={AddProductScreen}></Route>
         <Route path="/signin" component={SigninScreen} ></Route>
         <Route path="/register" component={RegisterScreen} ></Route>
         <Route path="/shipping" component={ShippingAddressScreen}></Route>

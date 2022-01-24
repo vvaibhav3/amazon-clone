@@ -29,8 +29,8 @@ export default function ProductScreen(props) {
                 <div>
                 <Link to="/">Back to results</Link>
                 <div className="row top">
-                    <div className="col-2">
-                        <img className="large" src={product.image} alt={product.name} />
+                    <div className="col-2" style={{margin:"10px"}}>
+                        <img className="large" src={product.image} alt={product.name}/>
                     </div>
                     
                     <div className="col-1">
