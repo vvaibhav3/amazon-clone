@@ -10,44 +10,32 @@ export default function ShowUserScreen(props) {
     const showUserList = useSelector(state => state.showUserList);
     const {users,error,loading}=showUserList;
     
-
+    let x=0;
     useEffect(() => {
         dispatch(listUsers())
     }, [dispatch]);
 
     return (
-        <div>
+        <div className='card card-body'>
             <h1>Users</h1>
             {
                 loading ? (<Loader></Loader>) : error ? (
                     <MessageBox variant="danger">{error}</MessageBox>
                 ) :(
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Created Date</th>
-                                <th>Admin</th>
-                                <th>Updated Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <ul>
                             {
                                 users.map((user) => (
-                                    <tr key={user._id}>
-                                        <td>{user._id}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.createdAt.substring(0,10)}</td>
-                                        <td>{user.isAdmin===true ? "Yes" : "No"}</td>
-                                        <td>{user.updatedAt.substring(0,10)}</td>
-                                    </tr>
+                                    <li key={user._id} className='row card card-body' style={{backgroundColor: (x++ % 2 ? "#whitesmoke" :"white")}}>
+                                        <div>Id : {user._id}</div>
+                                        <div>Name : {user.name}</div>
+                                        <div>Email : {user.email}</div>
+                                        <div>CreatedAt : {user.createdAt.substring(0,10)}</div>
+                                        <div>isAdmin : {user.isAdmin===true ? "Yes" : "No"}</div>
+                                        <div>UpdatedAt : {user.updatedAt.substring(0,10)}</div>
+                                    </li>
                                 ))
                             }
-                        </tbody>
-                    </table>
+                    </ul>
                 )
             }
         </div>

@@ -17,8 +17,7 @@ export default function RegisterScreen(props) {
 
     const userRegister= useSelector(state => state.userRegister);
     const {userInfo,laoding,error} =userRegister;
-
-    console.log(props.location.search.split("=")); 
+ 
     const dispatch = useDispatch();
     const submitHandler = (e) =>{
         e.preventDefault();

@@ -12,7 +12,8 @@ export default function CartScreen(props) {
     const {cartItems} =cart;
 
     useEffect(() =>{
-        dispatch(addToCart(prodcutId,qty));
+        if(prodcutId)
+            dispatch(addToCart(prodcutId,qty));
     },[dispatch,prodcutId,qty]);
     
     const removeFromCartHander=(id) =>{
@@ -28,7 +29,7 @@ export default function CartScreen(props) {
                 <h1 className='card card-body'>Shopping</h1>
                 {
                     cartItems.length ===0 ? 
-                    <MessageBox>
+                    <MessageBox variant="danger">
                         Oops!! cart is empty <Link to="/">Go to shopping</Link>
                     </MessageBox> :
                     (

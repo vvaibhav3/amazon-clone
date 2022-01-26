@@ -75,7 +75,6 @@ export default function ProfileScreen() {
                         </div>
 
                         <div>
-                            <lable />
                             <button className="primary" type="submit">Update</button>
                         </div>
                     </>

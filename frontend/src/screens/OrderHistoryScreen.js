@@ -10,48 +10,36 @@ export default function OrderHistoryScreen(props) {
     const orderMineList = useSelector(state => state.orderMineList);
     const {orders,error,loading}=orderMineList;
     
-
+    let x=0;
     useEffect(() => {
         dispatch(listOrderMine())
     }, [dispatch]);
 
     return (
-        <div>
+        <div className='card card-body'>
             <h1>Order History</h1>
             {
                 loading ? (<Loader></Loader>) : error ? (
                     <MessageBox variant="danger">{error}</MessageBox>
                 ) :(
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>DATE</th>
-                                <th>PAID</th>
-                                <th>Total</th>
-                                <th>DELIVERED</th>
-                                <th>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <ul>
                             {
                                 orders.map((order) => (
-                                    <tr key={order._id}>
-                                        <td>{order._id}</td>
-                                        <td>{order.createdAt.substring(0,10)}</td>
-                                        <td>{order.totalPrice.toFixed(2)}</td>
-                                        <td>{order.isPaid ? order.paidAt.substring(0,10) : "No"}</td>
-                                        <td>{order.isDelivered ? order.deliveredAt.substring(0,10) : "No"}</td>
-                                        <td>
+                                    <li key={order._id} className='row card card-body' style={{backgroundColor: (x++ % 2 ? "#whitesmoke" :"white")}}>
+                                        <div>Id : {order._id}</div>
+                                        <div>Date : {order.createdAt.substring(0,10)}</div>
+                                        <div>Price : {order.totalPrice.toFixed(2)}</div>
+                                        <div>Paid : {order.isPaid ? order.paidAt.substring(0,10) : "No"}</div>
+                                        <div>Deliverd : {order.isDelivered ? order.deliveredAt.substring(0,10) : "No"}</div>
+                                        <div>
                                             <button type="button" className="small" onClick={() => props.history.push(`/order/${order._id}`)} >
                                                 Details
                                             </button>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </li>
                                 ))
                             }
-                        </tbody>
-                    </table>
+                        </ul>
                 )
             }
         </div>
